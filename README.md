@@ -102,7 +102,11 @@ In order to complete this assignment, you must do the following:
 
 ### Grading
 
+## makeCacheMatrix creates a vector with a list of functions to obtain a matrix
+## cacheSolve creates a matrix that is inverse of the matrix created by makeCacheMatrix
+
 makeCacheMatrix <- function(x = matrix()) {
+ ## creates a special matrix that can cache its inverse
   inv <- NULL
   set <- function(y) {
     x <<- y
@@ -115,6 +119,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 cacheSolve <- function(x, ...){
+  ## returns the inverse matrix of x
   inv <- x$getInverse()
   if(!is.null(inv)){
     message("getting cached data")
@@ -126,22 +131,3 @@ cacheSolve <- function(x, ...){
   inv
 }
 
-pmatrix <- makeCacheMatrix(matrix(1:4, nrow = 2, ncol = 2))
-> pmatrix$get()
-     [,1] [,2]
-[1,]    1    3
-[2,]    2    4
-> cacheSolve(pmatrix)
-     [,1] [,2]
-[1,]   -2  1.5
-[2,]    1 -0.5
-> cacheSolve(pmatrix)
-getting cached data
-     [,1] [,2]
-[1,]   -2  1.5
-[2,]    1 -0.5
-> pmatrix$getInverse()
-     [,1] [,2]
-[1,]   -2  1.5
-[2,]    1 -0.5
-> 
